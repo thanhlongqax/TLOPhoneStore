@@ -1,0 +1,87 @@
+version: '3.8'
+
+services:
+  db:
+      image: mysql:8.0
+      container_name: finalNodeJS_MYSQL
+      environment:
+        MYSQL_ROOT_PASSWORD: 12345678 
+        MYSQL_DATABASE: Phone      
+        MYSQL_USER: thanhlong          
+        MYSQL_PASSWORD: 12345678       
+      ports:
+        - "3306:3306" 
+      networks:
+        - app-network
+      volumes:
+        - db_data:/var/lib/mysql
+  # Backend (NestJS) - Server 1
+  server1:
+    build:
+      context: ./BackEnd
+    container_name: nestjs-server1
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - ./backend/.env
+    networks:
+      - app-network
+    depends_on:
+      - db
+
+  # Backend (NestJS) - Server 2
+  server2:
+    build:
+      context: ./BackEnd
+    container_name: nestjs-server2
+    ports:
+      - "3002:3001"
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - ./backend/.env
+    networks:
+      - app-network
+    depends_on:
+      - db
+
+  # Nginx (Load balancer)
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile   
+    ports:
+      - "80:80" 
+    networks:
+      - app-network
+    depends_on:
+      - server1
+      - server2
+
+  # Frontend (ReactJS) 
+  client:
+      build:
+        context: ./FrontEnd 
+      container_name: vite-frontend
+      ports:
+        - "3000:3000"  
+      networks:
+        - app-network
+      command: serve -s dist -l 3000 
+      depends_on:
+        - nginx
+        - server1
+        - server2
+      volumes:
+        - ./FrontEnd/src:/app/src
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db_data:

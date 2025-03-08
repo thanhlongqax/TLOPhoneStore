@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+@media (max-width: 767px) {
+  .max-md\:flex-col {
+    flex-direction: column;
+  }
+  .max-md\:ml-0 {
+    margin-left: 0;
+  }
+  .max-md\:w-full {
+    width: 100%;
+  }
+  .max-md\:pb-24 {
+    padding-bottom: 6rem;
+  }
+  .max-md\:max-w-full {
+    max-width: 100%;
+  }
+  .max-md\:px-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  .max-md\:ml-2\.5 {
+    margin-left: 0.625rem;
+  }
+  .max-md\:mr-1 {
+    margin-right: 0.25rem;
+  }
+}
