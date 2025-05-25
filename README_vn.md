@@ -181,13 +181,9 @@ Tài liệu API được cung cấp qua **Swagger** tại đường dẫn:
 ---
 
 ## 📷 Giao Diện Ứng Dụng
-📌 *Đang cập nhật hình ảnh...*
-
 ---
 
 ## 🎥 Xem Video Hướng Dẫn Chi Tiết
-📌 *[Link video hướng dẫn (nếu có)]*
-
 ---
 
 ## 👤 Tác Giả
