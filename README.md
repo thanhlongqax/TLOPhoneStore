@@ -133,7 +133,7 @@ API documentation is available via **Swagger** at:
 ---  
 
 ## 📷 UI Screenshots  
-📌 *Coming soon...*  
+📌  
 ![alt text](docs/image.png)
 ![alt text](docs/image-1.png)
 ![alt text](docs/image-2.png)
@@ -143,8 +143,8 @@ API documentation is available via **Swagger** at:
 ---  
 
 ## 🎥 Video Tutorial  
-📌 *[Link to tutorial video (if available)]*  
-
+📌 
+None
 ---  
 
 ## 👤 Author  
